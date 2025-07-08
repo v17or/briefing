@@ -22,29 +22,28 @@ class RSSService {
     });
   }
 
+  private stripHTML(html: string): string {
+    return html.replace(/<[^>]*>?/gm, '').trim();
+  }
+
   async fetchAndSummarizeNews(rssUrl: string, category: string): Promise<NewsItem[]> {
     try {
-      // 1. Buscar RSS
       const response = await fetch(`/api/rss-proxy?url=${encodeURIComponent(rssUrl)}`);
       const xmlText = await response.text();
-      
-      // 2. Parsear XML
       const parsed = this.parser.parse(xmlText);
       const items = parsed.rss?.channel?.item || [];
       const itemsArray = Array.isArray(items) ? items : [items];
-      
-      // 3. Pegar apenas as 3 primeiras notícias
       const top3Items = itemsArray.slice(0, 3);
-      
-      // 4. Gerar resumos para cada notícia
+
       const newsWithSummaries = await Promise.all(
         top3Items.map(async (item: any) => {
-          const summary = await this.generateSummary(item.title, item.description);
-          
+          const cleanDescription = this.stripHTML(item.description || '');
+          const summary = await this.generateSummary(item.title, cleanDescription);
+
           return {
             id: item.guid?.['#text'] || item.link || Math.random().toString(),
             title: item.title || '',
-            description: item.description || '',
+            description: cleanDescription,
             summary,
             link: item.link || '',
             pubDate: this.formatDate(item.pubDate),
@@ -82,17 +81,11 @@ class RSSService {
       const date = new Date(dateString);
       const now = new Date();
       const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-      
-      if (diffInMinutes < 60) {
-        return `${diffInMinutes} min atrás`;
-      } else if (diffInMinutes < 1440) {
-        const hours = Math.floor(diffInMinutes / 60);
-        return `${hours}h atrás`;
-      } else {
-        const days = Math.floor(diffInMinutes / 1440);
-        return `${days}d atrás`;
-      }
-    } catch (error) {
+
+      if (diffInMinutes < 60) return `${diffInMinutes} min atrás`;
+      if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)}h atrás`;
+      return `${Math.floor(diffInMinutes / 1440)}d atrás`;
+    } catch {
       return 'Agora';
     }
   }

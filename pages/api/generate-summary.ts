@@ -37,8 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({ summary });
   } catch (error) {
-    console.error('Erro ao gerar resumo:', error);
-    // Fallback: usar descrição original
+    console.error('Erro no resumo:', error);
     const fallback = description.length > 150 ? description.substring(0, 150) + '...' : description;
     res.status(200).json({ summary: fallback });
   }

@@ -1,10 +1,8 @@
-// pages/api/noticias.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import Parser from 'rss-parser';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-// Tipo do item RSS
 type FeedItem = {
   title: string;
   link: string;
