@@ -1,0 +1,336 @@
+/* Container principal */
+.container {
+  padding: 40px 20px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.mainContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.newsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.newsTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.newsCount {
+  font-size: 15px;
+  color: #374151;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.newsCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.newsCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.newsCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.newsSource {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sourceIndicator {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+.newsTime {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.timeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.newsContentTitle {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 8px 0;
+  color: #111827;
+}
+
+.summaryContainer {
+  margin-top: 8px;
+}
+
+.summaryTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.newsSummary {
+  font-size: 16px;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.newsActionsRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.iconButton {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.iconButton:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.newsActions {
+  margin-top: 16px;
+}
+
+.readMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.readMoreButton:hover {
+  text-decoration: underline;
+}
+
+.externalIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.badge {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.economia {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.esportes {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: #1f2937;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.loadingContainer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #374151;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 20px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.retryButton {
+  margin-top: 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.retryButton:hover {
+  background: #b91c1c;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #3b82f6;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refreshIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* NOVOS estilos movidos do controlsStyles */
+.controlsHeader {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.managerToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.managerToggle:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.feedsInfo {
+  color: #6b7280;
+  font-size: 14px;
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 12px;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.emptyStateTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.ativo {
+  background-color: #dbeafe !important;
+  border-color: #2563eb !important;
+  color: #1e3a8a !important;
+  font-weight: bold;
+}
